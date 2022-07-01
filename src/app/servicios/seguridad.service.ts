@@ -61,21 +61,16 @@ export class SeguridadService {
    * @returns un booleano que indica si la información 
    * fue almacenada correctamente
    */
-  guardarDatosSesion(datosSesion: any): Boolean {
+   guardarDatosSesion(datosSesion: any) {
     let sesionActual = localStorage.getItem('sesion');
-    console.log("sesion actual "+sesionActual);
-    if (sesionActual) {
-      return false;
-    } else {
       let data: Usuario = {
         _id: datosSesion.user_id,
         token:datosSesion.token,
       };
       localStorage.setItem('sesion', JSON.stringify(data));
       this.setUsuario(data);
-      return true;
-    }
   }
+
   /**
    * Permite cerrar la sesión del usuario
    * que estaba previamente logueado
